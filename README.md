@@ -63,3 +63,98 @@ Each component repository includes its own setup and development instructions.
 - **Workflow Orchestration**
   - Interfaces with workflow engines to monitor and control pipeline lifecycles, trace task execution, and adjust parameters dynamically.
   - Currently supports the **ExtremeXP Execution Engine**, with planned support for **Kubeflow**, **Airflow**, and other orchestration platforms.
+
+## Setup Instructions
+
+**ExperimentLens** is deployed as a multi-service Docker environment.  
+This repository acts as the orchestration layer that automatically pulls all dependent repositories and launches the entire system.
+
+Follow the steps below to install and run ExperimentLens locally.
+
+### Prerequisites
+
+Before starting, ensure you have:
+
+- **Docker** (Docker Desktop recommended for Windows/Mac)
+- **Git**
+- **PowerShell** (Windows) or **Bash** (Linux/macOS)
+
+### 1 Clone Required Repositories
+
+ExperimentLens depends on three external repositories:
+
+- `vis-frontend`
+- `vis-api`
+- `extremexp-explainability-module`
+
+To fetch them automatically:
+
+#### Windows (PowerShell)
+
+    ./bootstrap.ps1
+
+#### Linux / macOS (Bash)
+
+    bash bootstrap.sh
+
+This creates a `repos/` directory containing all required components.
+
+### 2 Configure Environment Files
+
+Two environment files must be created before running the system.
+
+#### 2.1 — Main Orchestrator `.env` (in this repository)
+
+1. Copy the template:
+
+    cp .env.example .env
+
+(Windows users may need to copy manually.)
+
+2. Fill in the required values:
+
+- Proxy service configuration  
+- Access control service settings  
+- Keycloak / OIDC variables  
+- Output directory path (`OUTPUT_DATA_PATH`)
+
+This `.env` file configures the entire Docker environment.
+
+#### 2.2 — Backend API `.env`
+
+Located at:
+
+    repos/vis-api/.env
+
+1. Copy the template:
+
+    cp repos/vis-api/.env.example repos/vis-api/.env
+
+2. Fill in the required values:
+
+- `EXTREMEXP_OUTPUT_DIR=/app/output`
+- Workflow API URL and key  
+- Experimentation Engine API URL and key  
+- Zenoh credentials  
+- Any additional settings required by the backend
+
+The API **will not start** unless this file exists.
+
+### 3 Build and Run ExperimentLens
+
+Once all repositories and environment files are ready:
+
+#### Build the Docker images
+
+    docker compose build
+
+#### Start all services
+
+    docker compose up
+
+### Access the Dashboard
+
+Open your browser at:
+
+    http://localhost:5173
+
