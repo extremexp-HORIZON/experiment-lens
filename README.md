@@ -107,7 +107,7 @@ Two environment files must be created before running the system.
 
 1. Copy the template:
 
-    cp .env.example .env
+    ```cp .env.example .env```
 
 (Windows users may need to copy manually.)
 
@@ -127,7 +127,7 @@ Located at:
 
 1. Copy the template:
 
-    cp repos/vis-api/.env.example repos/vis-api/.env
+    ```cp repos/vis-api/.env.example repos/vis-api/.env```
 
 2. Fill in the required values:
 
