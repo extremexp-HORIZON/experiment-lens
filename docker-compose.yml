@@ -11,7 +11,7 @@ services:
     volumes:
       - ./repos/extremexp-explainability-module:/app
       - ${OUTPUT_DATA_PATH}:/app/output
-      - /data/xtreme/experiments:/data/xtreme/experiments
+      - ${EXPERIMENT_DATA_PATH}:/data/xtreme/experiments
     working_dir: /app
     command: python xai_server.py
     networks:
