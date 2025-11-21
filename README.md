@@ -132,11 +132,8 @@ Located at:
 
 2. Fill in the required values:
 
-- `EXTREMEXP_OUTPUT_DIR=/app/output`
-- Workflow API URL and key  
 - Experimentation Engine API URL and key  
 - Zenoh credentials  
-- Any additional settings required by the backend
 
 The API **will not start** unless this file exists.
 
