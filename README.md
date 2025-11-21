@@ -116,7 +116,6 @@ Two environment files must be created before running the system.
 - Proxy service configuration  
 - Access control service settings  
 - Keycloak / OIDC variables  
-- Output directory path (`OUTPUT_DATA_PATH`)
 
 This `.env` file configures the entire Docker environment.
 
