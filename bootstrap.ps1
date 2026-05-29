@@ -3,8 +3,8 @@ $Root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $ReposDir = Join-Path $Root "repos"
 
 $Targets = @(
-    @{ Name = "vis-frontend"; Branch = "new-extreme-new-navigation" }
-    @{ Name = "vis-api"; Branch = "zenoh-integration" }
+    @{ Name = "vis-frontend"; Branch = "local-deployment" }
+    @{ Name = "vis-api"; Branch = "local-deployment" }
     @{ Name = "extremexp-explainability-module"; Branch = "main" }
 )
 
