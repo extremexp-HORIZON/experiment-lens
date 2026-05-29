@@ -111,11 +111,7 @@ Two environment files must be created before running the system.
 
 (Windows users may need to copy manually.)
 
-2. Fill in the required values:
-
-- Proxy service configuration  
-- Access control service settings  
-- Keycloak / OIDC variables  
+1. Fill in the required values
 
 This `.env` file configures the entire Docker environment.
 
@@ -129,10 +125,7 @@ Located at:
 
     ```cp repos/vis-api/.env.example repos/vis-api/.env```
 
-2. Fill in the required values:
-
-- Experimentation Engine API URL and key  
-- Zenoh credentials  
+2. Fill in the required values
 
 The API **will not start** unless this file exists.
 
