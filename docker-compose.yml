@@ -12,6 +12,7 @@ services:
       - ./repos/extremexp-explainability-module:/app
       - ${OUTPUT_DATA_PATH}:/app/output
       - ${EXPERIMENT_DATA_PATH}:/data/xtreme/experiments
+      - ${MLFLOW_ARTIFACTS_PATH}:/opt/data/xtreme/mlflow/mlartifacts
     working_dir: /app
     command: python xai_server.py
     networks:
@@ -27,6 +28,7 @@ services:
     volumes:
       - ./repos/vis-api/.env:/app/.env
       - ${OUTPUT_DATA_PATH}:/app/output
+      - ${MLFLOW_ARTIFACTS_PATH}:/opt/data/xtreme/mlflow/mlartifacts
     restart: unless-stopped
     networks:
       - extremexp_network
