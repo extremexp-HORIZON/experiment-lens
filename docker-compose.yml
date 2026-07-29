@@ -3,13 +3,13 @@ version: "3.8"
 services:
   xai-service:
     build:
-      context: ./repos/extremexp-explainability-module
+      context: ./repos/explainability-module
       dockerfile: Dockerfile
     container_name: xai-service
     ports:
       - "50051:50051"
     volumes:
-      - ./repos/extremexp-explainability-module:/app
+      - ./repos/explainability-module:/app
       - ${OUTPUT_DATA_PATH}:/app/output
       - ${EXPERIMENT_DATA_PATH}:/data/xtreme/experiments
       - ${MLFLOW_ARTIFACTS_PATH}:/opt/data/xtreme/mlflow/mlartifacts
@@ -39,6 +39,7 @@ services:
       APP_GRPC_HOST_PORT: 50051
       MLFLOW_TRACKING_URL: http://host.docker.internal:5000
       KUBEFLOW_PIPELINES_BASE_URL: http://host.docker.internal:8888
+      LANGFUSE_API_URL: http://host.docker.internal:3000
 
 
   visualization-dashboard:

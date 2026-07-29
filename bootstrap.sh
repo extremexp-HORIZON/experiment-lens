@@ -2,14 +2,14 @@
 
 set -euo pipefail
 
-ORG="extremexp-HORIZON"
+ORG="ExperimentLens"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPOS_DIR="$ROOT_DIR/repos"
 
 REPOS=(
   "vis-frontend:local-deployment"
   "vis-api:local-deployment"
-  "extremexp-explainability-module:main"
+  "explainability-module:main"
 )
 
 mkdir -p "$REPOS_DIR"

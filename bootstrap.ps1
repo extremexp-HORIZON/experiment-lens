@@ -1,11 +1,11 @@
-$Org = "extremexp-HORIZON"
+$Org = "ExperimentLens"
 $Root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $ReposDir = Join-Path $Root "repos"
 
 $Targets = @(
     @{ Name = "vis-frontend"; Branch = "local-deployment" }
     @{ Name = "vis-api"; Branch = "local-deployment" }
-    @{ Name = "extremexp-explainability-module"; Branch = "main" }
+    @{ Name = "explainability-module"; Branch = "main" }
 )
 
 if (-not (Test-Path $ReposDir)) {
