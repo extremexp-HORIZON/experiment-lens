@@ -101,9 +101,7 @@ This creates a `repos/` directory containing all required components.
 
 ### 2 Configure Environment Files
 
-Two environment files must be created before running the system.
-
-#### 2.1 — Main Orchestrator `.env` (in this repository)
+A single `.env` file (in this repository) configures the entire Docker environment, including the backend API — you no longer need to maintain a separate `.env` inside `repos/vis-api`.
 
 1. Copy the template:
 
@@ -111,23 +109,9 @@ Two environment files must be created before running the system.
 
 (Windows users may need to copy manually.)
 
-1. Fill in the required values
-
-This `.env` file configures the entire Docker environment.
-
-#### 2.2 — Backend API `.env`
-
-Located at:
-
-    repos/vis-api/.env
-
-1. Copy the template:
-
-    ```cp repos/vis-api/.env.example repos/vis-api/.env```
-
 2. Fill in the required values
 
-The API **will not start** unless this file exists.
+Sensible defaults are provided for everything except the data paths (`OUTPUT_DATA_PATH`, `EXPERIMENT_DATA_PATH`, `MLFLOW_ARTIFACTS_PATH`), so the rest can usually be left as-is for local use.
 
 ### 3 Build and Run ExperimentLens
 
@@ -141,9 +125,16 @@ Once all repositories and environment files are ready:
 
     docker compose up
 
+This also starts a bundled **MLflow** tracking server and a bundled **Langfuse** observability stack — you don't need to run either of these yourself.
+
 ### Access the Dashboard
 
 Open your browser at:
 
     http://localhost:5173
+
+### Access MLflow and Langfuse
+
+- MLflow: http://localhost:5000
+- Langfuse: http://localhost:3000 — log in with the `LANGFUSE_INIT_USER_EMAIL` / `LANGFUSE_INIT_USER_PASSWORD` from your `.env` (defaults: `admin@experimentlens.local` / `changeme123`). A project matching `LANGFUSE_PUBLIC_KEY` / `LANGFUSE_SECRET_KEY` is created automatically on first boot, so vis-api can send traces without any manual setup.
 
